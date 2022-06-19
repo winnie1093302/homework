@@ -1,3 +1,11 @@
+<?php if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    echo $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    echo $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    echo $ip = $_SERVER['REMOTE_ADDR'];
+}
+?> 
 <html>
 <head>
 <title>
@@ -6,8 +14,10 @@
 <link rel="shortcut icon" href="/homework1/picture/墾丁.jpg" type="image/x-icon" />
 </head>
 <body>
+
 <h1>墾丁三日遊</h1>
 <body background="/homework1/picture/背景3.jpg" >
+<script language="javascript" src="http://www.linkwan.com/gb/broadmeter/VisitorInfo/systeminfo.asp?OnlyAddress=yes"></script> 
 <h2>1.行程內容</h2>
 <p><h3>想體驗南台灣最熱情的景點，好好放鬆一下嗎?</br>這次行程要帶大家用三天兩夜玩遍屏東，更要讓大家對屏東徹底改觀。</br>除了墾丁外，還有很多地方、許多景點更值得一遊！</br>跟著我們的步伐，讓你的屏東行程直接顛覆親朋好友的想像。
 </h3></p>
@@ -18,11 +28,11 @@
     <img src="picture/s2.jpg" width="200" height="200">
 </a>
 <h2>2.資料填寫</h2>
-<form action="answer.php" method="post">
+<form action="answer.php" method="post" enctype="multipart/form-data">
      <h3>Name: <input type="text" name="Name" required><br/>
 <br/>E-mail:<input type="email" name="mail" required><br/>
 <br/>Telephone:<input type="tel" name="phonenumber" placeholder="XXXX-XXX-XXX" required><br/>
-<br/>Gender:<input type="radio" name="gender">Male<input type="radio" name="gender">Female<br/>
+<br/>Gender:<input type="radio" name="gender" value="男">Male<input type="radio" name="gender" value="女">Female<br/>
 <br/>Food Preference:<input type="checkbox" name="meal">美式<input type="checkbox" name="meal">日式<input type="checkbox" name="meal">台式<input type="checkbox" name="meal">泰式<br/>
 <br/>T-shirt Size: 
 <select name="size">
